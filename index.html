@@ -9,114 +9,104 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
+            background: black; /* Fondo negro */
         }
 
         header {
             background: black;
-            color: white;
             padding: 30px 0;
             text-align: center;
             font-size: 45px;
             font-weight: bold;
-            z-index: 10;
+            color: white;
+            box-shadow: 0 4px 10px rgba(255,255,255,0.15);
         }
 
-        main {
-            background: url("IMG_6036.jpg") center/cover no-repeat fixed;
-            min-height: 100vh;
-            padding-bottom: 50px;
-        }
-
-        /* ---- INICIO ---- */
+        /* PANTALLA INICIO */
         #inicio {
-            height: calc(100vh - 100px);
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 30px;
+
+            /* Fondo con tu imagen */
+            background: url("IMG_6036.jpg") center/cover no-repeat fixed;
+            border-radius: 20px;
+            margin: 40px;
+            box-shadow: 0 0 25px rgba(255,255,255,0.15);
         }
 
-        #inicio button {
-            padding: 20px 40px;
-            font-size: 30px;
+        #inicio button,
+        .volver-btn {
+            background: white;
+            padding: 18px 40px;
+            font-size: 24px;
+            color: black;
             border: none;
-            border-radius: 15px;
+            border-radius: 20px;
             cursor: pointer;
-            background: black;
-            color: white;
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
             transition: 0.2s;
         }
 
-        #inicio button:hover {
-            transform: scale(1.05);
+        #inicio button:hover,
+        .volver-btn:hover {
+            transform: scale(1.08);
         }
 
-        /* ---- SECCIONES ---- */
-        section {
+        /* SECCIONES OCULTAS */
+        .section {
             display: none;
-            padding: 40px 20px;
-        }
-
-        .visible {
-            display: block;
+            padding-bottom: 60px;
         }
 
         h2 {
             text-align: center;
-            font-size: 32px;
+            font-size: 30px;
             color: white;
-            text-shadow: 0 0 6px black;
+            margin-top: 40px;
         }
 
-        /* ---- VOLVER ---- */
-        .volver-btn {
-            display: block;
-            margin: 30px auto;
-            padding: 15px 30px;
-            font-size: 22px;
-            background: black;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-
-        .volver-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* ---- GALERÍA ---- */
+        /* GALERÍA */
         .gallery {
+            padding: 30px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             max-width: 1200px;
             margin: auto;
-            padding: 20px;
         }
 
         .gallery img {
             width: 100%;
             border-radius: 15px;
             border: 3px solid white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+            transition: 0.2s;
         }
 
-        /* ---- MENSAJE SIN FOTOS ---- */
-        .empty {
-            text-align: center;
-            font-size: 26px;
-            color: white;
-            text-shadow: 0 0 6px black;
-            margin-top: 40px;
+        .gallery img:hover {
+            transform: scale(1.03);
         }
 
         footer {
-            text-align: center;
             background: black;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 16px;
             color: white;
-            padding: 15px;
+            margin-top: 40px;
+        }
+
+        .volver-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p {
+            color: white;
         }
     </style>
 </head>
@@ -125,54 +115,59 @@
 
 <header>EmilliaART</header>
 
-<main>
+<!-- PANTALLA DE INICIO -->
+<div id="inicio">
+    <button onclick="mostrarSeccion('dibujos')">DIBUJOS</button>
+    <button onclick="mostrarSeccion('fotos')">FOTOS</button>
+</div>
 
-    <!-- ----------- INICIO ----------- -->
-    <section id="inicio" class="visible">
-        <button onclick="mostrar('dibujos')">Dibujos</button>
-        <button onclick="mostrar('fotos')">Fotos</button>
-    </section>
+<!-- SECCIÓN DIBUJOS -->
+<section id="dibujos" class="section">
+    <h2>Galería de Dibujos</h2>
 
-    <!-- ----------- DIBUJOS ----------- -->
-    <section id="dibujos">
-        <h2>Galería de Dibujos</h2>
+    <div class="gallery">
+        <img src="Emi.jpg" alt="">
+        <img src="akiro.jpg" alt="">
+        <img src="em.jpg" alt="">
+        <img src="josejose.jpg" alt="">
+        <img src="u9upioj.jpg" alt="">
+    </div>
 
-        <div class="gallery">
-            <img src="imagen1.png">
-            <img src="imagen2.png">
-            <img src="imagen3.png">
-            <img src="imagen4.png">
-            <img src="imagen5.png">
-        </div>
+    <div class="volver-container">
+        <button class="volver-btn" onclick="volverInicio()">Volver al inicio</button>
+    </div>
+</section>
 
-        <button class="volver-btn" onclick="mostrar('inicio')">Volver al inicio</button>
-    </section>
+<!-- SECCIÓN FOTOS -->
+<section id="fotos" class="section">
+    <h2>Galería de Fotos</h2>
 
-    <!-- ----------- FOTOS ----------- -->
-    <section id="fotos">
-        <h2>Fotos</h2>
+    <p style="text-align:center; font-size:20px;">
+        Aún no subo fotos 💖
+    </p>
 
-        <p class="empty">Aún no se han subido fotos 📷</p>
+    <div class="volver-container">
+        <button class="volver-btn" onclick="volverInicio()">Volver al inicio</button>
+    </div>
+</section>
 
-        <button class="volver-btn" onclick="mostrar('inicio')">Volver al inicio</button>
-    </section>
-
-</main>
-
-<footer>
-    © 2025 EmilliaART — Portafolio
-</footer>
+<footer>© 2025 EmilliaART — Portafolio</footer>
 
 <script>
-    function mostrar(section) {
-        // Oculta todas las secciones
-        document.querySelectorAll("section").forEach(s => s.classList.remove("visible"));
+    function mostrarSeccion(id) {
+        document.getElementById("inicio").style.display = "none";
+        document.getElementById("dibujos").style.display = "none";
+        document.getElementById("fotos").style.display = "none";
 
-        // Muestra la sección seleccionada
-        document.getElementById(section).classList.add("visible");
+        document.getElementById(id).style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
-        // Evita que se vea como que se abre abajo
-        window.scrollTo(0, 0);
+    function volverInicio() {
+        document.getElementById("dibujos").style.display = "none";
+        document.getElementById("fotos").style.display = "none";
+        document.getElementById("inicio").style.display = "flex";
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
 </script>
 
