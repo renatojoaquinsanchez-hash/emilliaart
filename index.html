@@ -9,7 +9,6 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: #ffd6e8; /* color de respaldo si la imagen no carga */
         }
 
         header {
@@ -19,20 +18,18 @@
             text-align: center;
             font-size: 45px;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 10;
         }
 
-        /* Fondo para toda la parte central (inicio, dibujos, fotos) */
         main {
-            /* Imagen que pediste */
             background: url("IMG_6036.jpg") center/cover no-repeat fixed;
             min-height: 100vh;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
-        /* CONTENEDOR INICIO CENTRADO */
+        /* ---- INICIO ---- */
         #inicio {
-            height: 80vh;
+            height: calc(100vh - 100px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -55,7 +52,7 @@
             transform: scale(1.05);
         }
 
-        /* SECCIONES */
+        /* ---- SECCIONES ---- */
         section {
             display: none;
             padding: 40px 20px;
@@ -72,10 +69,10 @@
             text-shadow: 0 0 6px black;
         }
 
-        /* BOTÓN VOLVER */
+        /* ---- VOLVER ---- */
         .volver-btn {
             display: block;
-            margin: 20px auto;
+            margin: 30px auto;
             padding: 15px 30px;
             font-size: 22px;
             background: black;
@@ -89,7 +86,7 @@
             transform: scale(1.05);
         }
 
-        /* GALERÍA */
+        /* ---- GALERÍA ---- */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -106,12 +103,12 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        /* Mensaje sin fotos */
+        /* ---- MENSAJE SIN FOTOS ---- */
         .empty {
             text-align: center;
             font-size: 26px;
             color: white;
-            text-shadow: 0 0 5px black;
+            text-shadow: 0 0 6px black;
             margin-top: 40px;
         }
 
@@ -129,28 +126,29 @@
 <header>EmilliaART</header>
 
 <main>
-    <!-- INICIO -->
+
+    <!-- ----------- INICIO ----------- -->
     <section id="inicio" class="visible">
         <button onclick="mostrar('dibujos')">Dibujos</button>
         <button onclick="mostrar('fotos')">Fotos</button>
     </section>
 
-    <!-- DIBUJOS -->
+    <!-- ----------- DIBUJOS ----------- -->
     <section id="dibujos">
         <h2>Galería de Dibujos</h2>
 
         <div class="gallery">
-            <img src="imagen1.png" alt="Dibujo 1">
-            <img src="imagen2.png" alt="Dibujo 2">
-            <img src="imagen3.png" alt="Dibujo 3">
-            <img src="imagen4.png" alt="Dibujo 4">
-            <img src="imagen5.png" alt="Dibujo 5">
+            <img src="imagen1.png">
+            <img src="imagen2.png">
+            <img src="imagen3.png">
+            <img src="imagen4.png">
+            <img src="imagen5.png">
         </div>
 
         <button class="volver-btn" onclick="mostrar('inicio')">Volver al inicio</button>
     </section>
 
-    <!-- FOTOS -->
+    <!-- ----------- FOTOS ----------- -->
     <section id="fotos">
         <h2>Fotos</h2>
 
@@ -158,6 +156,7 @@
 
         <button class="volver-btn" onclick="mostrar('inicio')">Volver al inicio</button>
     </section>
+
 </main>
 
 <footer>
@@ -165,10 +164,16 @@
 </footer>
 
 <script>
-function mostrar(section) {
-    document.querySelectorAll("section").forEach(s => s.classList.remove("visible"));
-    document.getElementById(section).classList.add("visible");
-}
+    function mostrar(section) {
+        // Oculta todas las secciones
+        document.querySelectorAll("section").forEach(s => s.classList.remove("visible"));
+
+        // Muestra la sección seleccionada
+        document.getElementById(section).classList.add("visible");
+
+        // Evita que se vea como que se abre abajo
+        window.scrollTo(0, 0);
+    }
 </script>
 
 </body>
