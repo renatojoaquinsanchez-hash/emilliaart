@@ -9,38 +9,45 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-
-            /* Imagen de fondo para la parte central */
-            background: url("IMG_6036.jpg") center/cover no-repeat fixed;
+            background: #ffd6e8; /* color de respaldo si la imagen no carga */
         }
 
-        /* Encabezado */
         header {
-            background: #000000; /* negro */
+            background: black;
+            color: white;
             padding: 30px 0;
             text-align: center;
             font-size: 45px;
             font-weight: bold;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Sección de inicio */
+        /* Fondo para toda la parte central (inicio, dibujos, fotos) */
+        main {
+            /* Imagen que pediste */
+            background: url("IMG_6036.jpg") center/cover no-repeat fixed;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        /* CONTENEDOR INICIO CENTRADO */
         #inicio {
-            text-align: center;
-            padding: 50px 20px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
         }
 
         #inicio button {
-            background: #000000; /* negro */
-            border: none;
             padding: 20px 40px;
-            font-size: 24px;
-            color: white;
+            font-size: 30px;
+            border: none;
             border-radius: 15px;
-            margin: 20px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            background: black;
+            color: white;
             transition: 0.2s;
         }
 
@@ -48,119 +55,121 @@
             transform: scale(1.05);
         }
 
+        /* SECCIONES */
+        section {
+            display: none;
+            padding: 40px 20px;
+        }
+
+        .visible {
+            display: block;
+        }
+
         h2 {
             text-align: center;
-            margin-top: 25px;
-            font-size: 28px;
-            color: white; 
-            text-shadow: 0 0 5px black;
+            font-size: 32px;
+            color: white;
+            text-shadow: 0 0 6px black;
         }
 
-        /* Galería */
-        .gallery {
-            padding: 30px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .gallery img {
-            width: 100%;
-            border-radius: 15px;
-            border: 3px solid white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            transition: 0.2s;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.03);
-        }
-
-        /* Botón volver */
+        /* BOTÓN VOLVER */
         .volver-btn {
             display: block;
             margin: 20px auto;
-            background: #000000;
+            padding: 15px 30px;
+            font-size: 22px;
+            background: black;
             color: white;
-            padding: 12px 25px;
-            font-size: 20px;
-            border-radius: 10px;
-            cursor: pointer;
             border: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: 0.2s;
+            border-radius: 12px;
+            cursor: pointer;
         }
 
         .volver-btn:hover {
             transform: scale(1.05);
         }
 
-        /* Pie de página */
-        footer {
-            background: #000000; /* negro */
-            padding: 20px 0;
+        /* GALERÍA */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 15px;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Mensaje sin fotos */
+        .empty {
             text-align: center;
-            font-size: 16px;
-            margin-top: 40px;
+            font-size: 26px;
             color: white;
+            text-shadow: 0 0 5px black;
+            margin-top: 40px;
+        }
+
+        footer {
+            text-align: center;
+            background: black;
+            color: white;
+            padding: 15px;
         }
     </style>
 </head>
 
 <body>
 
-    <header>EmilliaART</header>
+<header>EmilliaART</header>
 
-    <!-- PANTALLA DE INICIO -->
-    <section id="inicio">
+<main>
+    <!-- INICIO -->
+    <section id="inicio" class="visible">
         <button onclick="mostrar('dibujos')">Dibujos</button>
         <button onclick="mostrar('fotos')">Fotos</button>
     </section>
 
-    <!-- GALERÍA DE DIBUJOS -->
-    <section id="dibujos" style="display:none;">
+    <!-- DIBUJOS -->
+    <section id="dibujos">
         <h2>Galería de Dibujos</h2>
 
-        <button class="volver-btn" onclick="mostrar('inicio')">Volver al Inicio</button>
-
         <div class="gallery">
-            <img src="Emi.jpg" alt="">
-            <img src="akiro.jpg" alt="">
-            <img src="em.jpg" alt="">
-            <img src="josejose.jpg" alt="">
-            <img src="u9upioj.jpg" alt="">
+            <img src="imagen1.png" alt="Dibujo 1">
+            <img src="imagen2.png" alt="Dibujo 2">
+            <img src="imagen3.png" alt="Dibujo 3">
+            <img src="imagen4.png" alt="Dibujo 4">
+            <img src="imagen5.png" alt="Dibujo 5">
         </div>
+
+        <button class="volver-btn" onclick="mostrar('inicio')">Volver al inicio</button>
     </section>
 
-    <!-- GALERÍA DE FOTOS -->
-    <section id="fotos" style="display:none;">
-        <h2>Galería de Fotos</h2>
+    <!-- FOTOS -->
+    <section id="fotos">
+        <h2>Fotos</h2>
 
-        <button class="volver-btn" onclick="mostrar('inicio')">Volver al Inicio</button>
+        <p class="empty">Aún no se han subido fotos 📷</p>
 
-        <div class="gallery">
-            <img src="foto1.jpg" alt="">
-            <img src="foto2.jpg" alt="">
-            <img src="foto3.jpg" alt="">
-        </div>
+        <button class="volver-btn" onclick="mostrar('inicio')">Volver al inicio</button>
     </section>
+</main>
 
-    <footer>
-        © 2025 EmilliaART — Portafolio
-    </footer>
+<footer>
+    © 2025 EmilliaART — Portafolio
+</footer>
 
-    <script>
-        function mostrar(seccion) {
-            document.getElementById("inicio").style.display = "none";
-            document.getElementById("dibujos").style.display = "none";
-            document.getElementById("fotos").style.display = "none";
-
-            document.getElementById(seccion).style.display = "block";
-            window.scrollTo(0, 0);
-        }
-    </script>
+<script>
+function mostrar(section) {
+    document.querySelectorAll("section").forEach(s => s.classList.remove("visible"));
+    document.getElementById(section).classList.add("visible");
+}
+</script>
 
 </body>
 </html>
