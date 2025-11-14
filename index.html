@@ -32,10 +32,11 @@
             gap: 30px;
         }
 
-        #inicio button {
+        #inicio button,
+        .volver-btn {
             background: #ff9ecf;
-            padding: 20px 50px;
-            font-size: 28px;
+            padding: 18px 40px;
+            font-size: 24px;
             color: white;
             border: none;
             border-radius: 20px;
@@ -44,13 +45,14 @@
             transition: 0.2s;
         }
 
-        #inicio button:hover {
+        #inicio button:hover,
+        .volver-btn:hover {
             transform: scale(1.08);
         }
 
         /* --- SECCIONES OCULTAS --- */
         .section {
-            display: none; /* esto evita que aparezcan al cargar */
+            display: none;
             padding-bottom: 60px;
         }
 
@@ -91,6 +93,11 @@
             color: white;
             margin-top: 40px;
         }
+
+        .volver-container {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -107,6 +114,7 @@
 <!-- SECCIÓN DIBUJOS -->
 <section id="dibujos" class="section">
     <h2>Galería de Dibujos</h2>
+
     <div class="gallery">
         <img src="Emi.jpg" alt="">
         <img src="akiro.jpg" alt="">
@@ -114,15 +122,24 @@
         <img src="josejose.jpg" alt="">
         <img src="u9upioj.jpg" alt="">
     </div>
+
+    <div class="volver-container">
+        <button class="volver-btn" onclick="volverInicio()">Volver al inicio</button>
+    </div>
 </section>
 
 <!-- SECCIÓN FOTOS -->
 <section id="fotos" class="section">
     <h2>Galería de Fotos</h2>
+
     <div class="gallery">
         <p style="text-align:center; font-size:20px; color:#666;">
             Aún no subo fotos 💖
         </p>
+    </div>
+
+    <div class="volver-container">
+        <button class="volver-btn" onclick="volverInicio()">Volver al inicio</button>
     </div>
 </section>
 
@@ -130,14 +147,16 @@
 
 <script>
     function mostrarSeccion(id) {
-        // Oculta pantalla de inicio
         document.getElementById("inicio").style.display = "none";
-
-        // Muestra sección seleccionada
         document.getElementById(id).style.display = "block";
-
-        // Baja suavemente
         document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    }
+
+    function volverInicio() {
+        document.getElementById("dibujos").style.display = "none";
+        document.getElementById("fotos").style.display = "none";
+        document.getElementById("inicio").style.display = "flex";
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
 </script>
 
