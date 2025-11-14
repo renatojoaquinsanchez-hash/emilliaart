@@ -1,42 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>EmilliaART - Portafolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmilliaART</title>
+
     <style>
         body {
-            font-family: Arial;
-            background: #f9f9f9;
             margin: 0;
-            padding: 0;
-            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffd6e8; /* rosado suave del boceto */
         }
+
+        /* Encabezado */
         header {
-            background: #ffb6d9;
-            padding: 25px;
-            font-size: 35px;
+            background: #ff9ecf;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 45px;
             font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
+
+        h2 {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        /* Galería */
         .gallery {
+            padding: 30px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            padding: 30px;
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
         }
-        img {
+
+        .gallery img {
             width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-radius: 15px;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Pie de página */
+        footer {
+            background: #ff9ecf;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 16px;
+            margin-top: 40px;
+            color: white;
         }
     </style>
 </head>
+
 <body>
+
     <header>EmilliaART</header>
-    <h2>Mi Galería</h2>
+
+    <h2>Galería de Dibujos</h2>
+
     <div class="gallery">
-        <img src="tuimagen1.png">
-        <img src="tuimagen2.jpg">
-        <img src="tuimagen3.png">
+        <!-- Reemplaza las imágenes con tus archivos subidos a GitHub -->
+        <img src="imagen1.png" alt="Emi.jpg">
+        <img src="imagen2.png" alt="akiro.jpg">
+        <img src="imagen3.png" alt="em.jpg">
+        <img src="imagen4.png" alt="josejose.jpg">
+        <img src="imagen5.png" alt="u9upioj.jpg">
     </div>
+
+    <footer>
+        © 2025 EmilliaART — Portafolio de Dibujos
+    </footer>
+
 </body>
 </html>
