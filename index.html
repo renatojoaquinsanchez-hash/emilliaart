@@ -57,7 +57,7 @@
             transform: scale(1.08);
         }
 
-        /* SECCIONES OCULTAS */
+        /* SECCIONES */
         .section {
             display: none;
             padding-bottom: 60px;
@@ -107,7 +107,20 @@
             margin-top: 20px;
         }
 
-        /* MODAL DE IMAGEN */
+        /* COMISIONES CUADROS */
+        .comi-box {
+            border: 2px solid white;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 700px;
+            margin: 25px auto;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        /* MODAL */
         #modal {
             display: none;
             position: fixed;
@@ -163,7 +176,6 @@
     <div class="volver-container">
         <button class="volver-btn" onclick="volverInicio()">Volver al inicio</button>
 
-        <!-- NUEVO BOTÓN -->
         <button class="comision-btn" onclick="mostrarSeccion('comisiones')">
             COMISIONA!!
         </button>
@@ -174,7 +186,7 @@
 <section id="fotos" class="section">
     <h2>Galería de Fotos</h2>
 
-    <p style="text-align:center; font-size:20px;">
+    <p style="text-align:center; font-size:20px; color:white;">
         Aún no subo fotos 💖
     </p>
 
@@ -183,21 +195,31 @@
     </div>
 </section>
 
-<!-- SECCIÓN COMISIONES (TU BOCETO) -->
+<!-- SECCIÓN COMISIONES (3 OPCIONES DEL BOCETO) -->
 <section id="comisiones" class="section">
     <h2>COMISIONES</h2>
 
-    <p style="color:white; text-align:center; font-size:20px;">
-        Aquí va lo que dibujaste en tu boceto (precios, estilos, ejemplos).  
-        Si quieres, lo agrego igual al dibujo original.
-    </p>
+    <div class="comi-box">
+        <b>ICON</b><br>
+        (Cara completa / estilo simple)
+    </div>
+
+    <div class="comi-box">
+        <b>MEDIO BODY</b><br>
+        (Mitad del cuerpo / estilo detallado)
+    </div>
+
+    <div class="comi-box">
+        <b>FULL BODY</b><br>
+        (Cuerpo completo / estilo completo)
+    </div>
 
     <div class="volver-container">
         <button class="volver-btn" onclick="volverInicio()">Volver al inicio</button>
     </div>
 </section>
 
-<!-- MODAL PARA IMÁGENES -->
+<!-- MODAL -->
 <div id="modal">
     <span id="modal-close" onclick="cerrarModal()">×</span>
     <img id="modal-img">
@@ -220,6 +242,7 @@
         document.getElementById("dibujos").style.display = "none";
         document.getElementById("fotos").style.display = "none";
         document.getElementById("comisiones").style.display = "none";
+
         document.getElementById("inicio").style.display = "flex";
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -237,4 +260,3 @@
 
 </body>
 </html>
-
