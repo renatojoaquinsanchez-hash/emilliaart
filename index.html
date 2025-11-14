@@ -9,7 +9,7 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: black; /* Fondo negro */
+            background: black;
         }
 
         header {
@@ -31,7 +31,6 @@
             align-items: center;
             gap: 30px;
 
-            /* Fondo con tu imagen */
             background: url("IMG_6036.jpg") center/cover no-repeat fixed;
             border-radius: 20px;
             margin: 40px;
@@ -39,7 +38,8 @@
         }
 
         #inicio button,
-        .volver-btn {
+        .volver-btn,
+        .comision-btn {
             background: white;
             padding: 18px 40px;
             font-size: 24px;
@@ -52,7 +52,8 @@
         }
 
         #inicio button:hover,
-        .volver-btn:hover {
+        .volver-btn:hover,
+        .comision-btn:hover {
             transform: scale(1.08);
         }
 
@@ -85,6 +86,7 @@
             border: 3px solid white;
             box-shadow: 0 4px 12px rgba(255,255,255,0.3);
             transition: 0.2s;
+            cursor: pointer;
         }
 
         .gallery img:hover {
@@ -105,9 +107,34 @@
             margin-top: 20px;
         }
 
-        p {
-            color: white;
+        /* MODAL DE IMAGEN */
+        #modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
+
+        #modal img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 10px;
+            border: 2px solid white;
+        }
+
+        #modal-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 
@@ -126,15 +153,20 @@
     <h2>Galería de Dibujos</h2>
 
     <div class="gallery">
-        <img src="Emi.jpg" alt="">
-        <img src="akiro.jpg" alt="">
-        <img src="em.jpg" alt="">
-        <img src="josejose.jpg" alt="">
-        <img src="u9upioj.jpg" alt="">
+        <img src="Emi.jpg" onclick="abrirModal(this.src)">
+        <img src="akiro.jpg" onclick="abrirModal(this.src)">
+        <img src="em.jpg" onclick="abrirModal(this.src)">
+        <img src="josejose.jpg" onclick="abrirModal(this.src)">
+        <img src="u9upioj.jpg" onclick="abrirModal(this.src)">
     </div>
 
     <div class="volver-container">
         <button class="volver-btn" onclick="volverInicio()">Volver al inicio</button>
+
+        <!-- NUEVO BOTÓN -->
+        <button class="comision-btn" onclick="mostrarSeccion('comisiones')">
+            COMISIONA!!
+        </button>
     </div>
 </section>
 
@@ -151,6 +183,26 @@
     </div>
 </section>
 
+<!-- SECCIÓN COMISIONES (TU BOCETO) -->
+<section id="comisiones" class="section">
+    <h2>COMISIONES</h2>
+
+    <p style="color:white; text-align:center; font-size:20px;">
+        Aquí va lo que dibujaste en tu boceto (precios, estilos, ejemplos).  
+        Si quieres, lo agrego igual al dibujo original.
+    </p>
+
+    <div class="volver-container">
+        <button class="volver-btn" onclick="volverInicio()">Volver al inicio</button>
+    </div>
+</section>
+
+<!-- MODAL PARA IMÁGENES -->
+<div id="modal">
+    <span id="modal-close" onclick="cerrarModal()">×</span>
+    <img id="modal-img">
+</div>
+
 <footer>© 2025 EmilliaART — Portafolio</footer>
 
 <script>
@@ -158,6 +210,7 @@
         document.getElementById("inicio").style.display = "none";
         document.getElementById("dibujos").style.display = "none";
         document.getElementById("fotos").style.display = "none";
+        document.getElementById("comisiones").style.display = "none";
 
         document.getElementById(id).style.display = "block";
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -166,10 +219,22 @@
     function volverInicio() {
         document.getElementById("dibujos").style.display = "none";
         document.getElementById("fotos").style.display = "none";
+        document.getElementById("comisiones").style.display = "none";
         document.getElementById("inicio").style.display = "flex";
         window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    /* MODAL */
+    function abrirModal(src) {
+        document.getElementById("modal-img").src = src;
+        document.getElementById("modal").style.display = "flex";
+    }
+
+    function cerrarModal() {
+        document.getElementById("modal").style.display = "none";
     }
 </script>
 
 </body>
 </html>
+
