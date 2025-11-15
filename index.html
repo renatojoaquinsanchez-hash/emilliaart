@@ -29,12 +29,18 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 30px;
 
             background: url("foxes.jpg") center/cover no-repeat fixed;
             border-radius: 20px;
             margin: 40px;
             box-shadow: 0 0 25px rgba(255,255,255,0.15);
+        }
+
+        /* NUEVA FILA PARA LOS BOTONES */
+        #botones-inicio {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
         }
 
         #inicio button,
@@ -70,7 +76,6 @@
             margin-top: 40px;
         }
 
-        /* GALERÍA */
         .gallery {
             padding: 30px;
             display: grid;
@@ -107,7 +112,6 @@
             margin-top: 20px;
         }
 
-        /* COMISIONES CUADROS */
         .comi-box {
             border: 2px solid white;
             border-radius: 15px;
@@ -147,7 +151,6 @@
             color: white;
             cursor: pointer;
         }
-
     </style>
 </head>
 
@@ -157,8 +160,10 @@
 
 <!-- PANTALLA DE INICIO -->
 <div id="inicio">
-    <button onclick="mostrarSeccion('dibujos')">DIBUJOS</button>
-    <button onclick="mostrarSeccion('fotos')">FOTOS</button>
+    <div id="botones-inicio">
+        <button onclick="mostrarSeccion('dibujos')">DIBUJOS</button>
+        <button onclick="mostrarSeccion('fotos')">FOTOS</button>
+    </div>
 </div>
 
 <!-- SECCIÓN DIBUJOS -->
@@ -195,7 +200,7 @@
     </div>
 </section>
 
-<!-- SECCIÓN COMISIONES (3 OPCIONES DEL BOCETO) -->
+<!-- SECCIÓN COMISIONES -->
 <section id="comisiones" class="section">
     <h2>COMISIONES</h2>
 
@@ -247,7 +252,6 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    /* MODAL */
     function abrirModal(src) {
         document.getElementById("modal-img").src = src;
         document.getElementById("modal").style.display = "flex";
